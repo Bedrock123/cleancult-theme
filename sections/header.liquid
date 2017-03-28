@@ -4,11 +4,14 @@
   <div class="info-bar showMobile">
     <div class="wrapper text-center">
 
+      {% comment %}
+      <!-- I do not like this. -->
       {% if shop.customer_accounts_enabled and section.settings.header_enable_account %}
         <div class="header-account-link">
           <a href="/account"><img src="{{ 'account.svg' | asset_url }}"></a>
         </div>
       {% endif %}
+      {% endcomment %}
 
       {% if section.settings.header_message != '' %}
       <div class="header-message uppercase{% if section.settings.header_enable_account or section.settings.header_enable_search %} header-message--crowded{% endif %}">
@@ -20,6 +23,8 @@
       </div>
       {% endif %}
 
+      {% comment %}
+      <!-- We are not enabling the search bar... ever -->
       {% if section.settings.header_enable_search %}
         <div class="header-search__wrapper">
           <div class="header-search">
@@ -31,12 +36,13 @@
           </div>
         </div>
       {% endif %}
+      {% endcomment %}
 
     </div>
   </div>
   {% endif %}
 
-  <header class="site-header {{ section.settings.height }}" role="banner">
+  <header class="site-header {{ section.settings.height }}" role="banner" id='sticker'>
     <div class="wrapper">
       <div class="nav--desktop">
         {% include 'nav-contents' %}

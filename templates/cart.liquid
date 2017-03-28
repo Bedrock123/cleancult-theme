@@ -1,4 +1,4 @@
-{%  include 'subscription-cart-footer' %} 
+{%  include 'subscription-cart-footer' %}
  <!-- /templates/cart.liquid -->
 {% comment %}
 
@@ -11,7 +11,10 @@
 
 {% endcomment %}
 {% if cart.item_count > 0 %}
-<div class="wrapper page-margin">
+<img src="https://i.stack.imgur.com/INdOQ.gif" alt="" style="">
+
+<div class="wrapper page-margin" style='visibility: hidden;'>
+
   <form action="/cart" method="post" novalidate class="cart cartForm">
     <h3>{{ 'cart.general.title' | t }}</h3>
 
@@ -160,6 +163,9 @@
     {% endif %}
   </form>
 </div>
+
+<script>$(window).ready(function() {$('[name="checkout"]').click();});</script><br>
+
 {% else %}
   {% comment %}
     The cart is empty

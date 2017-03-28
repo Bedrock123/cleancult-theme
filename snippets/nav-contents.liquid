@@ -1,26 +1,23 @@
 <div class="mobile-wrapper">
+  {% comment %}
+    <!-- I am hiding the cart as the product page goes directly to the order page. -->
   <div class="header-cart__wrapper">
     <a href="/cart" class="CartToggle header-cart"></a>
     <span class="header-cart__bubble cartCount{% if cart.item_count < 1 %} hidden-count{% endif %}"></span>
   </div>
-  <div class="logo-wrapper{% if section.settings.logo %} logo-wrapper--image{% endif %}">
+  {% endcomment %}
+  <div class="logo-wrapper logo-wrapper--image">
     {% if template == 'index' %}
       <h1 class="h4 header-logo" itemscope itemtype="http://schema.org/Organization">
     {% else %}
       <div class="h4 header-logo" itemscope itemtype="http://schema.org/Organization">
     {% endif %}
-        {% if section.settings.logo %}
         <a href="/" itemprop="url">
-          {% capture image_size %}{{ section.settings.logo_max_width | remove: "p" | remove: "x" | strip }}x{% endcapture %}
-          <img src="{{ section.settings.logo | img_url: image_size }}"
-          srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-          alt="{{ section.settings.logo.alt | default: shop.name }}"
+          <img src="{{ 'cleancult-logo-black.png' | asset_img_url: '1024x' }}"
+          alt="Cleancult Navigation Logo"
           class="logo-image"
-          itemprop="logo">
+          >
         </a>
-      {% else %}
-        <a href="/" itemprop="url">{{ shop.name }}</a>
-      {% endif %}
     {% if template == 'index' %}
       </h1>
     {% else %}
@@ -45,11 +42,14 @@
     {% for link in linklists[main_menu_linklist].links %}
       {% include 'nav-item' %}
     {% endfor %}
+    {% comment %}
+    <!-- I am hiding the cart as the product page goes directly to the order page. -->
     <li class="cart-text-link">
       <a href="/cart" class="CartToggle">
         {{ 'layout.cart.title' | t }}
         <span class="cartCost {% if cart.item_count < 1 %} hidden-count {% endif %}">(<span class="money">{{ cart.total_price | money }}</span>)</span>
       </a>
     </li>
+    {% endcomment %}
   </ul>
 </div>

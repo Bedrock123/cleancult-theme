@@ -135,7 +135,7 @@
 		{% if subscriptions.widget_deliver_every %}
 			{% assign widget_deliver_every = subscriptions.widget_deliver_every %}
 		{% else %}
-			{% assign widget_deliver_every = 'Deliver every' %}
+			{% assign widget_deliver_every = 'Deliver evry' %}
 		{% endif %}
 		{% if product.metafields.subscriptions.shipping_interval_unit_type.size > 0 %}
 			{% assign shipping_interval_unit_type = product.metafields.subscriptions.shipping_interval_unit_type %}
@@ -211,8 +211,8 @@
 			margin-left: 2px;
     		font-size: 100%;
 		}
-		
-		
+
+
 		/* Widget: Popup */
 		div.rc_popup {
 			display: block;
@@ -302,7 +302,7 @@
 		}
 		{{ recharge_custom_css }}
 		/* Add custom CSS below */
-		
+
 	</style>
 	<!-- Subscriptions Powered by ReCharge Payments: HTML -->
 	<section id="recurring_choice_{{ product.id }}" style="display: none;" class="rc_container">
@@ -366,7 +366,7 @@
 			<div class="rc_popup">
 				<div class="rc_popup__hover">
 					{% if show_widget_icon == 'true' %}
-						<img src="//rechargestatic-bootstrapheroes.netdna-ssl.com/static/images/widget/rc_widget__icon__black@2x.png" height="21" class="rc_popup__icon"> 
+						<img src="//rechargestatic-bootstrapheroes.netdna-ssl.com/static/images/widget/rc_widget__icon__black@2x.png" height="21" class="rc_popup__icon">
 					{% endif %}
 					{{ subscription_details_verbiage }}
 					<div class="rc_popup__popup">
@@ -397,7 +397,7 @@
 			// "use strict";
 			window.rechargedebug = {};
 			window.script_inclusion;
-			window.currency_prefix = "$"; // $ £ 
+			window.currency_prefix = "$"; // $ £
 			window.currency_suffix = ""; //
 			window.lock_{{ product.id }} = false;
 			window.first_time_{{ product.id }} = true;
@@ -865,8 +865,8 @@
 							var variant_price_to_discount_price_map = buildVariantPriceToDiscountPriceMap();
 							var variant_id_to_price_map = buildVariantIdToPriceMap();
 
-							
-							
+
+
 
 							// Manually select the correct duplicate-product variant
 							updateDiscountVariantSelect(variant_id_to_discount_id_map, duplicate_select);
@@ -966,6 +966,16 @@
 		})();
 		// Prevents the browser from serving a cached file after using the back-button
 		window.onunload = function() {};
+	</script>
+	<script type="text/javascript">
+	$.ajax({
+	type: "POST",
+	url: '/cart/clear.js',
+	success: function(){
+	  console.log('cart cleared')
+	},
+	dataType: 'json'
+	});
 	</script>
 {% endif %}
 <!-- Subscriptions Powered by ReCharge Payments: End Liquid Code -->
